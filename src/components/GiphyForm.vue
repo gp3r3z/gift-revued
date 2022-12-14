@@ -12,7 +12,7 @@
     <div class="mt-3" v-for="gip in giphys">
         <img class="img-fluid" :src="gip.url" />
         <h3> {{ gip.title }}</h3>
-        <img src="https://giphy.com/gifs/pbsnature-fnix5judzLJDJTaLgm" />
+
     </div>
 </template>
 
@@ -27,7 +27,7 @@ import { giphysService } from '../services/GiphysService.js'
 export default {
     setup() {
         onMounted(() => {
-            getGiphys()
+            // getGiphys()
         })
         const search = reactive({
             query: ''
@@ -45,7 +45,7 @@ export default {
             async searchGiphy() {
                 try {
                     logger.log(search)
-                    // await giphysService.searchGiphy
+                    await giphysService.searchGiphy(search)
                 } catch (error) {
                     Pop.error(error)
                 }
